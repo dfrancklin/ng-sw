@@ -1,0 +1,38 @@
+<div *ngIf="films$ | async as films; else loading">
+	<div class="table-responsive">
+		<table class="table table-dark table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Rerelease Date</th>
+					<!-- <th>Director</th> -->
+					<!-- <th>Producer</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let film of films.results">
+					<td>{{ film.episode_id }}</td>
+					<td>{{ film.title }}</td>
+					<td>{{ film.release_date | date }}</td>
+					<!-- <td>{{ film.director }}</td> -->
+					<!-- <td>{{ film.producer }}</td> -->
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div id="pagination" class="form-inline">
+		<button class="btn btn-primary mr-4" (click)="previousPage()" [disabled]="!films.previous">Previous</button>
+
+		<!-- <div class="form-group mr-4" *ngIf="films.previous || films.next"> -->
+		<div class="form-group mr-4 my-1">
+			<label for="current-page" class="form-check-label mr-1 d-none d-sm-block">Page: </label>
+			<input type="text" id="current-page" [value]="currentPage" class="form-control" [readOnly]="!films.previous && !films.next">
+		</div>
+
+		<button class="btn btn-primary" (click)="nextPage()" [disabled]="!films.next">Next</button>
+	</div>
+</div>
+
+<ng-template #loading>Carregando...</ng-template>

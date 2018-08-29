@@ -1,24 +1,13 @@
 <header>
-	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-darker text-warning">
-		<a class="navbar-brand text-warning" [routerLink]="['/']">STAR WARS</a>
-
-		<button class="navbar-toggler"
-				type="button"
-				aria-controls="navbar-content"
-				[attr.aria-expanded]="!isCollapsed"
-				aria-label="Toggle navigation"
-				(click)="toggleNavbar()">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbar-content" #nav [ngClass]="{'collapse': isCollapsed}">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['/']" routerLinkActive="active">Home</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<app-top-nav>
+		<app-item-nav [link]="['/home']">Home</app-item-nav>
+		<app-item-nav [link]="['/films']">Films</app-item-nav>
+		<app-item-nav [link]="['/people']">People</app-item-nav>
+		<app-item-nav [link]="['/planets']">Planets</app-item-nav>
+		<app-item-nav [link]="['/species']">Species</app-item-nav>
+		<app-item-nav [link]="['/starships']">Starships</app-item-nav>
+		<app-item-nav [link]="['/vehicles']">Vehicles</app-item-nav>
+	</app-top-nav>
 </header>
 
 <div class="container-fluid py-4">

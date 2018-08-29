@@ -8,11 +8,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class AppComponent {
 
   isCollapsed = true;
-  @ViewChild('nav') navContainer: ElementRef;
 
-  constructor() {
-    console.log(this.navContainer);
-  }
+  constructor() { }
 
   toggleNavbar() {
     this.isCollapsed = !this.isCollapsed;
