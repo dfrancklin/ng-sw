@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { ItemNavComponent } from './item-nav/item-nav.component';
+import { ListCommonComponent } from './list-common/list-common.component';
 
 @NgModule({
   imports: [
@@ -12,12 +13,14 @@ import { ItemNavComponent } from './item-nav/item-nav.component';
     RouterModule
   ],
   declarations: [
-    TopNavComponent,
     ItemNavComponent,
+    ListCommonComponent,
+    TopNavComponent,
   ],
   exports: [
-    TopNavComponent,
     ItemNavComponent,
+    ListCommonComponent,
+    TopNavComponent,
   ]
 })
 export class ShareModule { }

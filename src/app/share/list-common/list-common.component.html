@@ -1,0 +1,74 @@
+<div *ngIf="observable | async as obs; else loading">
+	<div class="table-responsive">
+		<table class="table table-dark table-bordered table-hover">
+			<thead>
+				<tr>
+					<th *ngFor="let prop of header">
+						<span *ngIf="isObject(fields[prop])">{{fields[prop].label}}</span>
+						<span *ngIf="!isObject(fields[prop])">{{fields[prop]}}</span>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of obs.results">
+					<td *ngFor="let prop of header">
+						<span *ngIf="isObject(fields[prop])">{{fields[prop]|json}}</span>
+						<span *ngIf="!isObject(fields[prop])">{{item[prop]}}</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div id="pagination" class="form-inline mb-4">
+		<button class="btn btn-primary mr-4" (click)="prevPage()" [disabled]="!obs.previous">Previous</button>
+
+		<!-- <div class="form-group mr-4" *ngIf="obs.previous || obs.next"> -->
+		<div class="form-group mr-4 my-1">
+			<label for="current-page" class="form-check-label mr-1 d-none d-sm-block">Page: </label>
+			<input type="text" id="current-page" [value]="currentPage" class="form-control" [readOnly]="!obs.previous && !obs.next">
+		</div>
+
+		<button class="btn btn-primary" (click)="nextPage()" [disabled]="!obs.next">Next</button>
+	</div>
+
+	<pre class="text-white">{{obs|json}}</pre>
+	<!-- <pre class="text-white">{{fields|json}}</pre>
+	<div class="table-responsive">
+		<table class="table table-dark table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Rerelease Date</th>
+					<!-- <th>Director</th> --
+					<!-- <th>Producer</th> --
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr *ngFor="let item of obs.results">
+					<td>{{ item.episode_id }}</td>
+					<td>{{ item.title }}</td>
+					<td>{{ item.release_date | date }}</td>
+					<!-- <td>{{ item.director }}</td> --
+					<!-- <td>{{ item.producer }}</td> --
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div id="pagination" class="form-inline">
+		<button class="btn btn-primary mr-4" (click)="previousPage()" [disabled]="!obs.previous">Previous</button>
+
+		<!-- <div class="form-group mr-4" *ngIf="obs.previous || obs.next"> --
+		<div class="form-group mr-4 my-1">
+			<label for="current-page" class="form-check-label mr-1 d-none d-sm-block">Page: </label>
+			<input type="text" id="current-page" [value]="currentPage" class="form-control" [readOnly]="!obs.previous && !obs.next">
+		</div>
+
+		<button class="btn btn-primary" (click)="nextPage()" [disabled]="!obs.next">Next</button>
+	</div> -->
+</div>
+
+<ng-template #loading>Carregando...</ng-template>

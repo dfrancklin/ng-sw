@@ -13,6 +13,7 @@ import { Film } from './film.model';
 export class FilmsService {
 
   private readonly API = `${environment.API}/films`;
+  // private readonly API = `${environment.API}/people`;
 
   constructor(private http: HttpClient) { }
 

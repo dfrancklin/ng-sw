@@ -14,6 +14,8 @@ import { Film } from './../film.model';
 export class FilmsListComponent implements OnInit {
 
   films$: Observable<Film[]>;
+  fields = { episode_id: 'Episode', title: 'Title', release_date: { label: 'Release Date', pipes: ['date'] } };
+  // fields = { name: 'Name', gender: 'Gender' };
   currentPage: number;
 
   constructor(
@@ -31,7 +33,7 @@ export class FilmsListComponent implements OnInit {
     });
   }
 
-  previousPage() {
+  prevPage() {
     --this.currentPage;
 
     if (this.currentPage <= 0) {
